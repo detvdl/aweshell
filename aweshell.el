@@ -104,6 +104,9 @@
 ;;; Change log:
 ;;;
 ;;
+;; 2021/03/9
+;;      * Replace `ido-completing-read' by `completing-read' to allow user-defined completion
+;;
 ;; 2020/03/28
 ;;      * Hide hl-line in shell.
 ;;
@@ -433,7 +436,7 @@ Create new one if no eshell buffer exists."
     (let* ((start-pos (eshell-beginning-of-input))
            (input (eshell-get-old-input))
            (all-shell-history (aweshell-parse-shell-history)))
-      (let* ((command (ido-completing-read "Search history: " all-shell-history)))
+      (let* ((command (completing-read "Search history: " all-shell-history)))
         (eshell-kill-input)
         (insert command)
         )))
